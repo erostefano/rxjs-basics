@@ -1,2 +1,2 @@
 # rxjs-callback
-Shows how observables are built in different styles.
+Some devs have difficulties in understanding the concept of callbacks in RxJS. For this reason you will find different ways of creating Observables.
