@@ -22,3 +22,9 @@ npm install -g ts-node
 ```
 npm install -g typescript
 ```
+
+Then you can run the code by this
+
+```
+ts-node ./solutions/without_type.ts
+```

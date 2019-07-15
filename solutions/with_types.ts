@@ -1,16 +1,29 @@
 export { };
 
 /**
- * An interface with three methods
+ * Interface Observer with three methods.
  */
 interface IObserver {
+    /**
+     * For the next correct event in the stream
+     * @param x event
+     */
     next(x): any;
+
+    /**
+     * When an error occures
+     * @param err error event
+     */
     error(err): any;
+
+    /**
+     * When the stream has finished
+     */
     complete(): void;
 }
 
 /**
- * A class which implements the interface IObserver
+ * An implementation of the interface IObserver
  */
 class ObserverImpl implements IObserver {
     next(x: any) {
@@ -27,7 +40,28 @@ class ObserverImpl implements IObserver {
 }
 
 /**
- * Observable which has the data streams
+ * The subscription is returned by the observable when subscribing to it.
+ */
+class Subscription {
+    private observer;
+    private interval;
+
+    constructor(interval, observer) {
+        this.interval = interval;
+        this.observer = observer;
+    }
+
+    /**
+     * Unsubscribes by clearing the interval
+     */
+    unsubscribe() {
+        clearInterval(this.interval);
+        this.observer.complete();
+    }
+}
+
+/**
+ * Observable which has the data
  */
 class Observable {
 
@@ -47,21 +81,12 @@ class Observable {
             }
         }, 1000);
 
-        //TODO: create type for subscription
-
-        let subscription = {
-            unsubscribe: () => {
-                clearInterval(interval);
-                observer.complete();
-            }
-        }
-
-        return subscription;
+        return new Subscription(interval, observer);
     }
 }
 
 let subscription = new Observable().subscribe(new ObserverImpl);
 
 setTimeout(() => {
-    subscription.unsubscribe();
+   subscription.unsubscribe();
 }, 10000);
