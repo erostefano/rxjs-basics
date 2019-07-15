@@ -28,3 +28,27 @@ Then you can run the code by this
 ```
 ts-node ./solutions/without_type.ts
 ```
+
+## What's good about Observables?
+
+As each asynchronous datastream is wrapped around an Observable you always know how to handle every different datastream. You don't have multiple different implementations about it.
+
+- http requests
+- click events
+
+## How do Observables, Observers and Subscriptions work together?
+
+> Source: https://sites.google.com/site/debasish22blog/rxjs/observables-observers-and-subscriptions
+
+### Observable
+Wraps a stream that continuously emits data over data
+
+### Observer 
+The Observer is passed to Observable.subscribe(observer) as an callback. It executes a piece of code when invoked by the Observable.
+
+The Observer has the following three methods: 
+- next()
+- error()
+- complete()
+
+![alt text](./assets/concept.png "Concept between Observable and Observer")
