@@ -1,5 +1,5 @@
 # rxjs-basics
-Some devs have difficulties in understanding the concept of callbacks in RxJS. For this reason you will find two ways of creating Observables: the short ways and the long way where everything is typed.
+Some devs have difficulties in understanding the concept of callbacks in RxJS. For this reason you will find two ways of creating Observables: the short way and the long way where everything is typed.
 
 ## Get started
 
@@ -26,7 +26,7 @@ npm install -g typescript
 Then you can run the code by this
 
 ```
-ts-node ./solutions/without_type.ts
+ts-node ./solutions/observable_with_types.ts
 ```
 
 ## What's good about Observables?
